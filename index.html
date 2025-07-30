@@ -18,7 +18,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Link para o seu arquivo de estilos CSS personalizado -->
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href=".assets/style.css"> -->
+    <style>
+        /* Estilos para a animação do modal e backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+        #modal {
+            display: none; /* Inicia escondido */
+        }
+        #modal.flex {
+            display: flex;
+        }
+    </style>
 </head>
 <body class="bg-stone-50 text-stone-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
 
@@ -52,11 +66,11 @@
             <header class="text-center mb-8 flex justify-between items-center relative">
                  <h1 class="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white">Seu Plano de Estudos</h1>
                  <div class="flex items-center gap-4">
-                    <button id="theme-toggle-dashboard" class="p-2 rounded-md hover:bg-stone-200 dark:hover:bg-gray-700">
-                        <span id="theme-toggle-dark-icon-dashboard">🌙</span>
-                        <span id="theme-toggle-light-icon-dashboard" class="hidden">☀️</span>
-                    </button>
-                    <button id="reset-plan-btn" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition text-sm">Resetar Plano</button>
+                     <button id="theme-toggle-dashboard" class="p-2 rounded-md hover:bg-stone-200 dark:hover:bg-gray-700">
+                         <span id="theme-toggle-dark-icon-dashboard">🌙</span>
+                         <span id="theme-toggle-light-icon-dashboard" class="hidden">☀️</span>
+                     </button>
+                     <button id="reset-plan-btn" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition text-sm">Resetar Plano</button>
                  </div>
             </header>
             
@@ -84,20 +98,28 @@
                     </div>
                 </section>
 
+                <!-- ===== SEÇÃO DO CALENDÁRIO MODIFICADA ===== -->
                 <section id="calendar-plan" class="mt-8">
-                    <h2 class="text-2xl font-bold mb-4 text-center dark:text-white">Calendário de Estudos</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-center dark:text-white">Calendário de Estudos da Semana</h2>
                     <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-center mb-4">
-                            <button id="prev-month-btn" class="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-gray-700">&lt;</button>
-                            <h3 id="month-year-header" class="text-xl font-semibold dark:text-white"></h3>
-                            <button id="next-month-btn" class="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-gray-700">&gt;</button>
+                            <button id="prev-week-btn" class="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-gray-700 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                            </button>
+                            
+                            <h3 id="week-range-header" class="text-lg sm:text-xl font-semibold dark:text-white text-center"></h3>
+
+                            <button id="next-week-btn" class="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-gray-700 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
                         </div>
                         <div class="grid grid-cols-7 gap-1 text-center font-semibold text-sm text-stone-600 dark:text-gray-400 mb-2">
                             <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
                         </div>
-                        <div id="calendar-grid" class="grid grid-cols-7 gap-1 calendar-grid"></div>
+                        <div id="calendar-grid" class="grid grid-cols-1 sm:grid-cols-7 gap-1 sm:gap-2"></div>
                     </div>
                 </section>
+                <!-- ===== FIM DA SEÇÃO DO CALENDÁRIO MODIFICADA ===== -->
             </main>
         </div>
 
@@ -121,6 +143,7 @@
     </div>
 
     <!-- Link para o seu arquivo JavaScript, 'defer' garante que ele só será executado após o HTML ser analisado -->
+    <!-- LEMBRE-SE: Você precisará atualizar a lógica em 'script.js' para lidar com a exibição semanal do calendário. -->
     <script src="script.js" defer></script>
 </body>
 </html>
